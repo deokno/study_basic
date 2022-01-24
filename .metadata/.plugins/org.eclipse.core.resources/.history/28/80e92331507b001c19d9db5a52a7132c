@@ -1,0 +1,24 @@
+package my.Practicenote;
+
+public class note {
+
+//	public static void main(String[] args) {
+//		
+//	int A = ' ';
+//	int B = ' ';
+//	
+//	if()
+//		if(A>B) 
+//			System.out.println("A가 B보다 큰 경우에는 '>'를 출력한다. ");
+//		else if (A<B)	
+//			System.out.println("A가 B보다 작은 경우에는 '<'를 출력한다.");
+//		else 
+//			System.out.println("A와 B가 같은 경우에는 '=='를 출력한다.");
+//			
+//	
+//		
+//		
+//		
+//	}
+
+}
