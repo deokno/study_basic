@@ -1,0 +1,32 @@
+package jdbc.day03;
+
+import java.util.Scanner;
+
+public class MemberCtrl {
+	
+	// attribute, field, property, 속성
+	
+	
+	// operation, method, 기능
+	
+	// *** 시작메뉴를 보여주는 메소드 *** //
+	
+	public void menu_Start(Scanner sc) {
+		
+		System.out.println("\n >>> ----- 시작메뉴 ----- <<< \n"
+						 + "1. 회원가입     2. 로그인     3. 프로그램종료\n"
+				         + "-----------------------------\n");
+		
+		System.out.println("▷ 메뉴번호 선택 : ");
+		String s_Choice = sc.nextLine();
+		
+		
+	}// end of public void menu_Start(Scanner sc)
+	
+	
+	
+	
+	
+	
+	
+}

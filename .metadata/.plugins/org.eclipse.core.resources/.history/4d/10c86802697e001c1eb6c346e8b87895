@@ -1,0 +1,35 @@
+package jdbc.day03.board;
+
+import java.util.Scanner;
+
+public class TotalController {
+
+	
+	// field, attribute, property, 속성
+	
+	
+	
+	
+	// operation, method, 기능
+	
+	// *** 시작메뉴 메소드 생성하기 *** // 
+	public void menu_Start(Scanner sc) {
+		
+		String s_Choice = "";
+		do {
+		
+		System.out.println("\n >>> ----- 시작메뉴 "+ loginName +"----- <<< \n"
+				 + "1. 회원가입     2."+ login_logout +"      3. 프로그램종료\n"
+				 + add_menu
+		         + "-----------------------------\n");
+
+		System.out.print("▷ 메뉴번호 선택 : ");
+		s_Choice = sc.nextLine();
+		}while ( =("3".equals(s_Choice)) );		
+		
+				
+	}// end of public void menu_Start(Scanner sc) 
+
+	
+		
+}

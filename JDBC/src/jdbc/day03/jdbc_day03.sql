@@ -32,6 +32,31 @@ nocycle
 nocache;
 -- Sequence USERSEQ이(가) 생성되었습니다.
 
+select name, mobile, point, to_char(registerday,'yyyy-mm-dd') as registerday
+from jdbc_member
+order by userseq asc;
+
+
+
+select name
+from jdbc_member
+where status = 1 and userid = 'leess' and passwd = '1234';
+
+String sql = "select name\n"+
+"from jdbc_member\n"+
+"where status = 1 and userid = 'leess' and passwd = '1234'";
+
+
+update jdbc_member set status = 1
+where userseq = 1;
+
+
 select *
 from jdbc_member
 order by userseq asc;
+
+rollback;
+
+commit;
+
+

@@ -83,9 +83,19 @@ public class MemberDTO {
 	
 	public void setStatus(int status) {
 		this.status = status;
+		
 	}
 	
+	///////////////////////////////////////////////////////////////////
 	
+	@Override
+	public String toString() {
+		
+		return "◇ 성명 : "+name+"\n"
+			 + "◇ 휴대폰 : "+mobile+"\n"	
+			 + "◇ 포인트 : "+point+"\n"	
+			 + "◇ 가입일자 : "+registerday+"\n";	
+	}
 	
 	
 }

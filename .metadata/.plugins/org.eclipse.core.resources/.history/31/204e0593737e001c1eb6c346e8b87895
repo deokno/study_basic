@@ -1,0 +1,106 @@
+package jdbc.day03.board;
+
+import java.util.*;
+
+public class TotalController {
+
+	
+	// field, attribute, property, 속성
+	InterMemberDAO mdao = new MemberDAO();
+	
+	
+	
+	// operation, method, 기능
+	
+	// *** 시작메뉴 메소드 생성하기 *** // 
+	public void menu_Start(Scanner sc) {
+		
+		MemberDTO member = null;
+		String s_Choice = "";
+		
+		
+		
+		do {
+			String loginName = "";
+			String login_logout = "로그인";
+			String add_menu = "";
+			if(member != null) {
+				loginName = "이순신";
+				login_logout = "로그아웃";
+			}
+		
+			System.out.println("\n >>> ----- 시작메뉴 "+ loginName +"----- <<< \n"
+					 + "1. 회원가입     2."+ login_logout +"      3. 프로그램종료"
+			         + "-----------------------------\n");
+	
+			System.out.print("▷ 메뉴번호 선택 : ");
+			s_Choice = sc.nextLine();
+			
+			switch (s_Choice) {
+			case "1" : // 회원가입
+				
+				break;
+			
+			case "2" :
+					// 로그인
+					if("로그인".equals(login_logout)) {
+						
+						member = login(sc); // 로그인 처리 하기
+						
+					}
+					// 로그아웃
+					else {
+						member = null;
+						System.out.println(">> 로그아웃 되었습니다. <<\n");
+					}
+				
+				
+				break;
+				
+			case "3" : 	// 프로그램 종료
+		
+				break;
+				
+			default:
+					System.out.println(">> 메뉴에 없는 번호입니다. 다시 선택하세요. << \n");
+				break;
+			}
+			
+			
+		
+		}while ( !("3".equals(s_Choice)) );		
+		
+				
+	}// end of public void menu_Start(Scanner sc) 
+
+	
+	// *** 로그인처리하기 메소드 생성하기 *** // 
+	private MemberDTO login(Scanner sc) {
+		
+		MemberDTO member = null;
+		
+		System.out.println("\n >>> --- 로그인 --- <<<");
+		
+		System.out.print("▷ 아이디 : ");
+		String userid = sc.nextLine();
+		
+		System.out.print("▷ 비밀번호 : ");
+		String passwd = sc.nextLine();
+		
+		Map<String, String> paraMap = new HashMap<>();
+		paraMap.put("userid", userid);
+		paraMap.put("passwd", passwd);
+		
+		
+		
+		
+		return member;
+	}// end of private MemberDTO login(Scanner sc)
+	
+	
+	
+
+
+	
+		
+}

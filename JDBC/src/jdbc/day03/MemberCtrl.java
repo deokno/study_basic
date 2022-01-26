@@ -1,6 +1,7 @@
 package jdbc.day03;
 
-import java.util.Scanner;
+import java.util.*;
+
 
 public class MemberCtrl {
 	
@@ -14,10 +15,25 @@ public class MemberCtrl {
 	public void menu_Start(Scanner sc) {
 		
 		String s_Choice = "";
+		MemberDTO member = null;
 		
 		do {
-			System.out.println("\n >>> ----- 시작메뉴 ----- <<< \n"
-							 + "1. 회원가입     2. 로그인     3. 프로그램종료\n"
+//			String loginName = (member != null)?"["+ member.getName() +"님 로그인중]":"";
+//			String login_logout = (member != null)?"로그아웃":"로그인";
+			String loginName = "";
+			String login_logout = "로그인";
+			String menu_myInfo = "";
+			if(member != null) {
+				loginName = "["+ member.getName() +"님 로그인중]";
+				login_logout = "로그아웃";
+				menu_myInfo = "4. 나의정보보기         5. 회원탈퇴하기 \n";
+			} 
+				
+			
+			
+			System.out.println("\n >>> ----- 시작메뉴 "+ loginName +"----- <<< \n"
+							 + "1. 회원가입     2."+ login_logout +"      3. 프로그램종료\n"
+							 + menu_myInfo
 					         + "-----------------------------\n");
 			
 			System.out.print("▷ 메뉴번호 선택 : ");
@@ -30,12 +46,45 @@ public class MemberCtrl {
 				break;
 			case "2" : // 로그인 or 로그아웃
 				
+				if("로그인".equals(login_logout))
+					member = login(sc); // 로그인 시도하기 , memberDTO에서 받아와야한다.
+				else {
+					member = null; // 로그아웃 하기
+					System.out.println(">>> 로그아웃 되었습니다. <<<\n");
+				}
+				
+					
 				break;
 			case "3" : // 프로그램 종료
-	
+					
 				break;
 				
+			case "4" : 
+					if(member != null) {
+						// 나의정보보기
+					//	System.out.println(member.toString());
+					// 또는
+						System.out.println(member);
+					}else
+						System.out.println(">>> 메뉴에 없는 번호입니다. 다시 선택하세요. <<<");
+				break;	
+			
+			case "5" :
+					if(member != null) { // 회원탈퇴하기
+						int n = mdao.memberDelete(member.getUserseq());
+						if(n==1) {	
+							System.out.println(">> 회원탈퇴 성공 ! <<");
+							member = null;
+						}
+						
+					}else {
+						System.out.println(">>> 메뉴에 없는 번호입니다. 다시 선택하세요. <<<");
+					}
+						
+				break;	
+				
 			default:
+				
 				System.out.println(">>> 메뉴에 없는 번호입니다. 다시 선택하세요. <<<");
 				break;
 			}// end of switch
@@ -76,6 +125,42 @@ public class MemberCtrl {
 		}
 		
 	}// end of private void memberRegister(Scanner sc)
+	
+	
+	// *** 로그인을 처리 해주는 메소드 생성하기 ***//
+	
+	private MemberDTO login(Scanner sc) {
+		
+		MemberDTO member = null;
+		
+		System.out.println("\n >>> ---- 로그인 ---- <<<");
+		
+		System.out.print("▷ 아이디 :");
+		String userid = sc.nextLine();
+		
+		System.out.print("▷ 비밀번호 :");
+		String passwd = sc.nextLine();
+		
+		
+		Map<String, String> paraMap = new HashMap<>();
+		paraMap.put("userid", userid);
+		paraMap.put("passwd", passwd);
+		
+		
+		
+		member = mdao.login(paraMap);
+		
+		if(member != null) {
+			System.out.println("\n >>> 로그인 성공 <<<\n");
+		}else {
+			System.out.println("\n >>> 로그인 실패 <<<\n");
+		}
+		
+		
+		return member;
+		
+	}// end of private MemberDTO login(Scanner sc)
+	
 	
 	
 	

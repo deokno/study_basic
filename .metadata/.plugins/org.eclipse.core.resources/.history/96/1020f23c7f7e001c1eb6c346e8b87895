@@ -1,0 +1,21 @@
+package jdbc.day03.board;
+
+import java.util.Map;
+
+public interface InterMemberDAO {
+	
+	// 자원반납 메소드 
+	void close();
+	
+	
+	
+	// 로그인 처리(select) 메소드
+	MemberDTO login(Map<String, String> paraMap);
+	
+	// 회원가입(insert) 메소드
+	int memberRegister(MemberDTO member);
+
+
+	
+	
+}

@@ -1,0 +1,38 @@
+package jdbc.day03.board;
+
+import java.sql.*;
+import java.util.*;
+
+public class MemberDAO implements InterMemberDAO {
+
+	
+	// attribute, field, property, 속성
+	Connection conn;
+	PreparedStatement pstmt;
+	ResultSet rs;
+	
+	
+	// operation, method, 기능
+	
+	// *** 자원반납 메소드 구현하기 *** //
+	@Override
+	public void close() {
+		try {
+			if(rs != null) rs.close();
+			if(pstmt != null) pstmt.close();
+			if(conn != null) conn.close();
+		} catch (SQLException e) {
+				e.printStackTrace();
+			}
+	}// end of public void close() 
+	
+	
+	// 로그인 처리(select) 메소드 구현하기	
+	@Override
+	public MemberDTO login(Map<String, String> paraMap) {
+		
+		return null;
+		
+	} // end of public MemberDTO login(Map<String, String> paraMap)
+
+}
