@@ -72,6 +72,53 @@ insert into jdbc_board(boardno, fk_userid, subject, contents, writeday, viewcoun
 values(jdbc_board.nextval, ?, ?, ?, ?, ?, ?)
 
 
+update jdbc_member set status = 1
+where userid = 'leess';
+
+commit;
+
+----------------------------------------------------------------------------------
+
+insert into jdbc_board(boardno, fk_userid, subject, contents, boardpasswd)
+values(board_seq.nextval, 'eomjh', '짜장면', '맛있어요', '1234');
+
+insert into jdbc_board(boardno, fk_userid, subject, contents, boardpasswd)
+values(board_seq.nextval, 'leess', '돈까스', '좋아해요', '1234');
+
+insert into jdbc_board(boardno, fk_userid, subject, contents, boardpasswd)
+values(board_seq.nextval, 'eomjh', '치킨', '맥주와함께~~ 치맥', '1234');
+
+insert into jdbc_board(boardno, fk_userid, subject, contents, boardpasswd)
+values(board_seq.nextval, 'leehr', '피자', '아주좋아요.', '1234');
+
+commit;
+
+select *
+from jdbc_board
+order by boardno desc;
 
 
+select boardno, subject,name, to_char(writeday,'yyyy-mm-dd hh24:mi:ss'), viewcount
+from jdbc_board B join jdbc_member M
+on B.fk_userid = M.userid
+order by boardno desc;
 
+
+select *
+from jdbc_board
+where boardno = 2;
+
+
+select *
+from jdbc_board
+where boardno = 2 and fk_userid = 'leess';
+
+
+select *
+from jdbc_board
+where boardno = 3;
+
+
+select *
+from jdbc_board
+where boardno = 3 and fk_userid = 'leess';

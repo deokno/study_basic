@@ -1,5 +1,6 @@
 package jdbc.day03.board;
 
+import java.util.List;
 import java.util.Map;
 
 public interface InterMemberDAO {
@@ -17,6 +18,9 @@ public interface InterMemberDAO {
 	
 	// 로그인 처리(select) 메소드
 	MemberDTO login(Map<String, String> paraMap);
+
+	// 관리자를 제외한 모든 회원들을 선택한 정렬기준으로 보여주는(select) 메소드	
+	List<MemberDTO> selectAllMember(String sortChoice);
 	
 
 

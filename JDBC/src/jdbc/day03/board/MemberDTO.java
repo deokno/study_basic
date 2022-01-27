@@ -5,7 +5,7 @@ package jdbc.day03.board;
 //  어떤 테이블에 데이터를 insert 하고자 할때 DTO에 담아서 보낸다.
 //  또한 어떤 테이블에서 데이터를 select 하고자 할때도 DTO에 담아서 읽어온다.
 
-public class MemberDTO {
+public class MemberDTO { // // BoardDTO 가 오라클의 jdbc_member(부모테이블) 테이블의 1개행을 의미하는 것이다. 
 
 	// attribute, field, property, 속성
 	
@@ -22,6 +22,7 @@ public class MemberDTO {
 		public int getUserseq() {
 			return userseq;
 		}
+		
 		public void setUserseq(int userseq) {
 			this.userseq = userseq;
 		}
