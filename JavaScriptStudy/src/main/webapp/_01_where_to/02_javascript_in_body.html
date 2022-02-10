@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>스크립트 태그는 body 태그내에 위치해도 됩니다.</title>
+
+
+
+
+</head>
+<body>
+
+<h2>스크립트 태그는 body 태그내에 위치해도 됩니다.</h2>
+
+<p id="demo">변경전 p태그</p>
+
+<!--
+	 <button type="button" onclick="javascript:myFunction()">클릭하세요</button> 
+									javascript: 은 생략 가능합니다.
+-->
+
+<button type="button" onclick="myFunction()">클릭하세요</button>
+
+	<script type="text/javascript">
+		function myFunction() {
+			document.getElementById("demo").innerHTML = '<span style="color:red;">p태그의 내용이 변경되었습니다.<span/>';
+		}
+	</script>
+
+</body>
+</html>
