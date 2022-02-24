@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>버튼을 클릭하면 색상 및 글자가 나오는 것</title>
+
+<style type="text/css">
+	div#container {
+		/* border: solid 1px grey; */
+		width: 80%;
+		margin: 0 auto;
+		padding:2%;
+	}
+	
+	button {
+		width: 60px;
+		margin: 40px 10px 20px 20px;
+		padding: 5px;
+		font-size: 10pt;
+		cursor: pointer;
+		text-align: center;
+		height: 40px;
+	}
+	
+	span {
+		font-size: 21pt;
+		background-color: navy;
+		color: white;
+		font-weight: normal;
+		margin-right: 40px; 
+		
+	}
+	
+	div.answer {
+		display: inline-block;
+		margin-top: 50px;
+	}
+	
+/* 	
+	div#colorDiv {
+		display:inline-block;
+		border: solid 1px grey;
+		width: 200px;
+		height: 200px;
+	}
+	
+	div#hangulDiv {
+		display:inline-block;
+		font-size: 20pt;
+	}
+	 */
+	
+	
+</style>
+
+<script type="text/javascript" src="../../js/jquery-3.6.0.min.js"></script>	
+<script type="text/javascript">
+	$(document).ready(function() {
+		
+		const arrBtn = [{color:"red", hangul:"빨강"}
+				       ,{color:"orange", hangul:"주황"}
+				       ,{color:"yellow", hangul:"노랑"}
+				       ,{color:"green", hangul:"초록"}
+				       ,{color:"blue", hangul:"파랑"}
+				       ,{color:"navy", hangul:"남색"}
+				       ,{color:"purple", hangul:"보라"}
+     	 			   ];
+		
+		let html = `<span>버튼을 눌러보세요</span>`;
+		
+		arrBtn.forEach((item, index) => {
+			  html += `<button type='buttons'>${item.color}</button>`; 
+		});
+
+		$("div#btnsDiv").html(html);
+		
+		$("div#btnsDiv > button[type='buttons']").click( (event) => {
+			
+			const $target = $(event.target);
+			
+			// const i = $target.index();
+			
+			// console.log(arrBtn[i].color);
+			
+			$("div#colorDiv").css({'width':'200px', 'height':'200px','background-color':$target.text()});
+			// !!!! 중요 !!!!
+			// === 7개 버튼 중에서 클릭한 버튼의 index 값을 알아오고자 한다. === 
+			const i = $("div#btnsDiv > button[type='buttons']").index($target);	
+			
+			// console.log(i);
+			
+			$("div#hangulDiv").html(arrBtn[i].hangul).css({'font-size':'20pt','color':$target.text()});
+			
+		});
+		
+		$("div#btnsDiv > button[type='buttons']").eq(0).trigger("click");
+		
+	});
+</script>
+
+</head>
+<body>
+
+	<div id="container">
+		<div id="btnsDiv"></div>
+		<div id="colorDiv" class="answer"></div>
+		<div id="hangulDiv" class="answer"></div>
+	</div>
+	
+
+</body>
+</html>
